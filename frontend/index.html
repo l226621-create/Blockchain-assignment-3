@@ -3,121 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khan Supply Chain DApp</title>
+    <title>MUSTAFA SAJID BLOCKCHAIN</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
   </head>
   <body>
-    <header class="hero">
-      <div>
-        <p class="eyebrow">Blockchain Assignment</p>
-        <h1>Khan Supply Chain Management DApp</h1>
-        <p class="subtitle">
-          Track products from manufacturer to customer on Polygon Amoy.
-        </p>
-      </div>
-      <div class="hero-actions">
-        <button id="switch-network-btn" type="button" class="secondary-btn">Switch to Amoy</button>
-        <button id="connect-btn" type="button">Connect MetaMask</button>
-      </div>
-    </header>
+    <div class="page-shell">
+      <div class="page-glow page-glow-left"></div>
+      <div class="page-glow page-glow-right"></div>
 
-    <main class="layout">
-      <section class="panel status-panel">
-        <h2>Connection</h2>
-        <div class="status-grid">
-          <div>
-            <span class="label">Wallet</span>
-            <p id="wallet-address">Not connected</p>
-          </div>
-          <div>
-            <span class="label">Network</span>
-            <p id="network-name">Unknown</p>
-          </div>
-          <div>
-            <span class="label">Role</span>
-            <p id="wallet-role">Unknown</p>
-          </div>
-          <div>
-            <span class="label">Contract</span>
-            <p id="contract-address">0x9c017B499927f63b487CD15F7fCD430A0C4Df4BB</p>
+      <header class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">MUSTAFA SAJID BLOCKCHAIN</p>
+          <h1>Supply Chain Command Center</h1>
+          <p class="subtitle">
+            Manage product roles, ownership transitions, and on-chain audit history from a single Polygon Amoy dashboard.
+          </p>
+          <div class="hero-tags">
+            <span>Polygon Amoy</span>
+            <span>MetaMask</span>
+            <span>Immutable Product Trail</span>
           </div>
         </div>
-        <p id="global-message" class="message"></p>
-      </section>
 
-      <section class="panel">
-        <h2>Assign Role</h2>
-        <p class="helper">Only the contract owner can assign roles.</p>
-        <form id="assign-role-form">
-          <label>
-            Wallet Address
-            <input id="role-address" type="text" placeholder="0x..." required />
-          </label>
-          <label>
-            Role
-            <select id="role-select" required>
-              <option value="1">Manufacturer</option>
-              <option value="2">Distributor</option>
-              <option value="3">Retailer</option>
-              <option value="4">Customer</option>
-            </select>
-          </label>
-          <button type="submit">Assign Role</button>
-        </form>
-      </section>
-
-      <section class="panel">
-        <h2>Register Product</h2>
-        <p class="helper">Only a manufacturer can register a new product.</p>
-        <form id="register-product-form">
-          <label>
-            Product Name
-            <input id="product-name" type="text" placeholder="Product name" required />
-          </label>
-          <label>
-            Description
-            <textarea
-              id="product-description"
-              rows="4"
-              placeholder="Product description"
-              required
-            ></textarea>
-          </label>
-          <button type="submit">Register Product</button>
-        </form>
-      </section>
-
-      <section class="panel">
-        <h2>Transfer Ownership</h2>
-        <p class="helper">Valid flow: Manufacturer -> Distributor -> Retailer -> Customer.</p>
-        <form id="transfer-product-form">
-          <label>
-            Product ID
-            <input id="transfer-product-id" type="number" min="1" placeholder="1" required />
-          </label>
-          <label>
-            New Owner Address
-            <input id="new-owner-address" type="text" placeholder="0x..." required />
-          </label>
-          <button type="submit">Transfer Product</button>
-        </form>
-      </section>
-
-      <section class="panel lookup-panel">
-        <h2>View Product Details</h2>
-        <form id="lookup-product-form" class="inline-form">
-          <input id="lookup-product-id" type="number" min="1" placeholder="Enter product ID" required />
-          <button type="submit">Load Product</button>
-        </form>
-
-        <div id="product-details" class="result-card hidden"></div>
-        <div class="history-section">
-          <h3>Audit Trail</h3>
-          <div id="history-list" class="history-list"></div>
+        <div class="hero-actions">
+          <button id="switch-network-btn" type="button" class="secondary-btn">Switch to Amoy</button>
+          <button id="connect-btn" type="button">Connect MetaMask</button>
         </div>
-      </section>
-    </main>
+      </header>
+
+      <main class="layout">
+        <section class="panel status-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Live Status</p>
+              <h2>Connection Overview</h2>
+            </div>
+          </div>
+
+          <div class="status-grid">
+            <article class="status-card">
+              <span class="label">Wallet</span>
+              <p id="wallet-address">Not connected</p>
+            </article>
+            <article class="status-card">
+              <span class="label">Network</span>
+              <p id="network-name">Unknown</p>
+            </article>
+            <article class="status-card">
+              <span class="label">Role</span>
+              <p id="wallet-role">Unknown</p>
+            </article>
+            <article class="status-card">
+              <span class="label">Contract</span>
+              <p id="contract-address">0x7441FC61fA5766EF1113935947e5780A931fF71B</p>
+            </article>
+          </div>
+
+          <p id="global-message" class="message"></p>
+        </section>
+
+        <section class="panel action-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Admin Control</p>
+              <h2>Assign Roles</h2>
+            </div>
+          </div>
+          <p class="helper">Only the contract owner can configure manufacturer, distributor, retailer, and customer access.</p>
+          <form id="assign-role-form">
+            <label>
+              Wallet Address
+              <input id="role-address" type="text" placeholder="0x..." required />
+            </label>
+            <label>
+              Role
+              <select id="role-select" required>
+                <option value="1">Manufacturer</option>
+                <option value="2">Distributor</option>
+                <option value="3">Retailer</option>
+                <option value="4">Customer</option>
+              </select>
+            </label>
+            <button type="submit">Assign Role</button>
+          </form>
+        </section>
+
+        <section class="panel action-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Product Intake</p>
+              <h2>Register Product</h2>
+            </div>
+          </div>
+          <p class="helper">Only wallets with the manufacturer role can mint a new supply-chain record.</p>
+          <form id="register-product-form">
+            <label>
+              Product Name
+              <input id="product-name" type="text" placeholder="Product name" required />
+            </label>
+            <label>
+              Description
+              <textarea
+                id="product-description"
+                rows="4"
+                placeholder="Product description"
+                required
+              ></textarea>
+            </label>
+            <button type="submit">Register Product</button>
+          </form>
+        </section>
+
+        <section class="panel action-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Custody Transfer</p>
+              <h2>Transfer Ownership</h2>
+            </div>
+          </div>
+          <p class="helper">Allowed route: Manufacturer to Distributor to Retailer to Customer.</p>
+          <form id="transfer-product-form">
+            <label>
+              Product ID
+              <input id="transfer-product-id" type="number" min="1" placeholder="1" required />
+            </label>
+            <label>
+              New Owner Address
+              <input id="new-owner-address" type="text" placeholder="0x..." required />
+            </label>
+            <button type="submit">Transfer Product</button>
+          </form>
+        </section>
+
+        <section class="panel lookup-panel">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Traceability</p>
+              <h2>Lookup Product History</h2>
+            </div>
+          </div>
+
+          <form id="lookup-product-form" class="inline-form">
+            <input id="lookup-product-id" type="number" min="1" placeholder="Enter product ID" required />
+            <button type="submit">Load Product</button>
+          </form>
+
+          <div id="product-details" class="result-card hidden"></div>
+
+          <div class="history-section">
+            <div class="section-heading compact">
+              <div>
+                <p class="section-kicker">Chain Record</p>
+                <h3>Audit Trail</h3>
+              </div>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
 
     <script type="module" src="./app.js"></script>
   </body>
